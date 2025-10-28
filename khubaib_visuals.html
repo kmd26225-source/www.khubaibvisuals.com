@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Khubaib Visuals — Video Editor & Freelancer</title>
+  <meta name="description" content="Khubaib Visuals — Professional video editing, motion design and freelance production services. Portfolio, services, and contact." />
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <style>
+    :root{
+      --bg:#0f1724; --card:#0b1220; --muted:#9aa7bf; --accent:#6ee7b7; --accent-2:#60a5fa;
+      --glass: rgba(255,255,255,0.04);
+      --glass-2: rgba(255,255,255,0.02);
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      color-scheme: dark;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;background:linear-gradient(180deg,#071021 0%, #071827 60%); color:#e6eef8; -webkit-font-smoothing:antialiased}
+
+    /* Page layout */
+    header{position:fixed;left:0;right:0;top:0;display:flex;align-items:center;justify-content:space-between;padding:18px 28px;backdrop-filter: blur(6px);background:linear-gradient(90deg, rgba(10,14,20,0.6), rgba(5,8,12,0.25));z-index:100}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;font-weight:800;color:#04303c}
+    nav{display:flex;gap:18px;align-items:center}
+    nav a{color:var(--muted);text-decoration:none;font-weight:600;font-size:15px;padding:8px;border-radius:8px;transition:all .25s}
+    nav a:hover{color:var(--accent);transform:translateY(-3px)}
+    .cta{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#022226;padding:10px 14px;border-radius:10px;font-weight:700}
+
+    main{padding-top:92px}
+
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1fr 460px;gap:40px;align-items:center;padding:80px 6vw}
+    .hero-left{max-width:720px}
+    h1{font-size:48px;line-height:1.02;margin:0 0 12px}
+    .kicker{display:inline-block;padding:6px 10px;border-radius:999px;background:var(--glass);color:var(--accent);font-weight:700;margin-bottom:18px}
+    p.lead{color:var(--muted);font-size:18px;margin:0 0 22px}
+    .cta-row{display:flex;gap:12px;align-items:center}
+    .btn{padding:12px 16px;border-radius:12px;background:var(--glass);border:1px solid rgba(255,255,255,0.03);cursor:pointer;font-weight:700}
+    .btn.primary{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#022226;border:none}
+
+    /* mock waveform */
+    .hero-stats{display:flex;gap:16px;margin-top:28px}
+    .stat{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));padding:14px;border-radius:12px;min-width:120px}
+    .stat strong{display:block;font-size:20px}
+    .stat small{color:var(--muted)}
+
+    /* Hero right: animated device / video thumbnail */
+    .device{position:relative;border-radius:18px;padding:20px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));box-shadow:0 10px 40px rgba(2,6,23,0.7);border:1px solid rgba(255,255,255,0.03)}
+    .video-thumb{width:100%;border-radius:12px;overflow:hidden;background:#000;height:300px;display:flex;align-items:center;justify-content:center;position:relative}
+    .video-thumb video{width:100%;height:100%;object-fit:cover}
+    .play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,0.45);padding:14px;border-radius:50%;backdrop-filter: blur(6px);}
+
+    /* Sections */
+    section{padding:72px 6vw}
+    .section-title{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:28px}
+    .section-title h2{margin:0}
+    .services{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+    .card{background:linear-gradient(180deg,var(--glass),var(--glass-2));padding:18px;border-radius:14px;border:1px solid rgba(255,255,255,0.03);transition:transform .35s, box-shadow .35s}
+    .card:hover{transform:translateY(-8px);box-shadow:0 18px 40px rgba(2,8,22,0.6)}
+
+    .portfolio-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+    .tile{position:relative;border-radius:12px;overflow:hidden;min-height:140px;background:#071428}
+    .tile img{width:100%;height:100%;object-fit:cover;display:block}
+    .tile .meta{position:absolute;left:12px;bottom:12px;background:linear-gradient(90deg, rgba(0,0,0,0.6), rgba(0,0,0,0.2));padding:8px 10px;border-radius:10px;font-weight:700}
+
+    /* Testimonials */
+    .carousel{display:flex;gap:12px;overflow-x:auto;padding-bottom:6px}
+    .testimonial{min-width:260px}
+
+    /* Footer */
+    footer{padding:36px 6vw;background:linear-gradient(180deg, rgba(0,0,0,0.2), transparent);border-top:1px solid rgba(255,255,255,0.02)}
+
+    /* Animations */
+    @keyframes float {0%{transform:translateY(0px)}50%{transform:translateY(-10px)}100%{transform:translateY(0px)}}
+    .device{animation:float 6s ease-in-out infinite}
+
+    /* Reveal on scroll */
+    .reveal{opacity:0;transform:translateY(18px);transition:opacity .8s ease, transform .8s ease}
+    .reveal.show{opacity:1;transform:none}
+
+    /* Responsive */
+    @media (max-width:920px){.hero{grid-template-columns:1fr;gap:30px;padding:56px 6vw}.hero-right{order:2}.hero-left{order:1}h1{font-size:34px}.video-thumb{height:220px}.logo{width:40px;height:40px}}
+    @media (max-width:520px){nav{display:none}}
+
+    /* Fancy cursor */
+    .cursor{position:fixed;left:0;top:0;width:10px;height:10px;border-radius:50%;pointer-events:none;transform:translate(-50%,-50%);z-index:9999;background:linear-gradient(90deg,var(--accent),var(--accent-2));mix-blend-mode:screen}
+
+    /* Modal */
+    .modal{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(2,6,23,0.6);backdrop-filter:blur(4px);z-index:200;opacity:0;pointer-events:none;transition:opacity .25s}
+    .modal.open{opacity:1;pointer-events:auto}
+    .modal .box{width:min(1100px,96vw);background:#071427;padding:12px;border-radius:12px}
+    .modal video{width:100%;height:560px;max-height:70vh;background:#000;border-radius:8px}
+  </style>
+</head>
+<body>
+  <div class="cursor" id="cursor"></div>
+  <header>
+    <div class="brand">
+      <div class="logo" aria-hidden>KV</div>
+      <div>
+        <div style="font-weight:800">Khubaib Visuals</div>
+        <div style="font-size:12px;color:var(--muted)">Video Editor • Motion Designer • Freelancer</div>
+      </div>
+    </div>
+    <nav aria-label="Main navigation">
+      <a href="#services">Services</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#testimonials">Testimonials</a>
+      <a href="#contact" class="cta">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-left">
+        <span class="kicker">Premium Editing</span>
+        <h1 class="reveal">Professional videos that tell your story — fast, clean, cinematic.</h1>
+        <p class="lead reveal">I help YouTubers, brands and filmmakers turn footage into emotion — editing, color grading, sound design and motion graphics.</p>
+
+        <div class="cta-row reveal">
+          <button class="btn primary" id="hireBtn"><i class="fa-solid fa-paper-plane" style="margin-right:8px"></i> Hire Khubaib</button>
+          <button class="btn" id="viewPortfolio"><i class="fa-solid fa-clapperboard" style="margin-right:8px"></i> View Portfolio</button>
+        </div>
+
+        <div class="hero-stats reveal" style="margin-top:20px">
+          <div class="stat"><strong>120+</strong><small>Projects completed</small></div>
+          <div class="stat"><strong>45k</strong><small>YouTube hours edited</small></div>
+          <div class="stat"><strong>5+</strong><small>Years experience</small></div>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="device reveal">
+          <div class="video-thumb" role="button" aria-label="Play showreel" id="thumb">
+            <!-- Placeholder poster image -->
+            <video muted loop playsinline id="thumbVideo" poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1280' height='720'%3E%3Crect width='100%25' height='100%25' fill='%23010a13'/%3E%3Ctext x='50%25' y='50%25' fill='%237ea8ff' font-size='42' font-family='Inter,Arial' text-anchor='middle' dy='.3em'%3EKhubaib Visuals - Showreel%3C/text%3E%3C/svg%3E">
+              <source src="" type="video/mp4">
+            </video>
+            <div class="play"><i class="fa-solid fa-play" style="font-size:18px;color:white"></i></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services">
+      <div class="section-title">
+        <h2>Services</h2>
+        <div style="color:var(--muted)">Tailored packages for creators & brands</div>
+      </div>
+      <div class="services">
+        <div class="card reveal">
+          <h3>Video Editing</h3>
+          <p style="color:var(--muted)">Narrative editing, vlogs, long-form and short-form content optimized for platforms.</p>
+        </div>
+        <div class="card reveal">
+          <h3>Motion Graphics</h3>
+          <p style="color:var(--muted)">Title sequences, animated intros, logo reveals and kinetic typography.</p>
+        </div>
+        <div class="card reveal">
+          <h3>Color Grading</h3>
+          <p style="color:var(--muted)">Cinematic color looks, matching multi-cam footage, film emulation.</p>
+        </div>
+        <div class="card reveal">
+          <h3>Sound Design</h3>
+          <p style="color:var(--muted)">Clean audio, mixing, SFX and punchy stems for social formats.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PORTFOLIO -->
+    <section id="portfolio">
+      <div class="section-title">
+        <h2>Portfolio</h2>
+        <div style="color:var(--muted)">Selected works — click to watch</div>
+      </div>
+      <div class="portfolio-grid">
+        <!-- tiles link to modal video playback -->
+        <div class="tile card reveal" data-src="https://interactive-examples.mdn.mozilla.net/media/examples/flower.mp4">
+          <img src="https://images.unsplash.com/photo-1522542550155-3a2f5fc04b10?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=b8e0b8f6a7f93b7d97b8b8f7f8b5c3a6" alt="Portfolio 1">
+          <div class="meta">Showreel — Brand Promo</div>
+        </div>
+        <div class="tile card reveal" data-src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4">
+          <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=3c9b6f1ecb0ab6b8daf8d2b9a9c3f0b1" alt="Portfolio 2">
+          <div class="meta">YouTube Long-Form Edit</div>
+        </div>
+        <div class="tile card reveal" data-src="https://interactive-examples.mdn.mozilla.net/media/examples/flower.mp4">
+          <img src="https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=1b2e3d4c5e6f7a8b9c0d" alt="Portfolio 3">
+          <div class="meta">Motion Graphics</div>
+        </div>
+        <div class="tile card reveal" data-src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4">
+          <img src="https://images.unsplash.com/photo-1496307612270-2f8f3e6b9c7d?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=abcdef1234567890" alt="Portfolio 4">
+          <div class="meta">Social Ads — 15s</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section id="testimonials">
+      <div class="section-title">
+        <h2>Testimonials</h2>
+        <div style="color:var(--muted)">What clients say</div>
+      </div>
+      <div class="carousel reveal">
+        <div class="card testimonial">
+          <p>"Khubaib turned our messy footage into a tight, emotional story. Quick, communicative and very creative."</p>
+          <div style="margin-top:12px;font-weight:700">— Sarah, Founder</div>
+        </div>
+        <div class="card testimonial">
+          <p>"Fantastic color grading and motion design. Views and watch time improved noticeably."</p>
+          <div style="margin-top:12px;font-weight:700">— Rohan, Creator</div>
+        </div>
+        <div class="card testimonial">
+          <p>"Reliable freelancer — delivered on time and the audio cleanup was perfect."</p>
+          <div style="margin-top:12px;font-weight:700">— Priya, Producer</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="section-title">
+        <h2>Contact</h2>
+        <div style="color:var(--muted)">Let's build something awesome together</div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 320px;gap:24px;align-items:start">
+        <form class="card reveal" id="contactForm" style="display:flex;flex-direction:column;gap:10px;padding:22px">
+          <input name="name" placeholder="Your name" required style="padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit" />
+          <input name="email" placeholder="Email" type="email" required style="padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit" />
+          <input name="project" placeholder="Project title" style="padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit" />
+          <textarea name="message" placeholder="Tell me about your project" rows="6" style="padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit"></textarea>
+          <div style="display:flex;gap:12px;align-items:center">
+            <button class="btn primary" type="submit"><i class="fa-solid fa-paper-plane" style="margin-right:8px"></i> Send Message</button>
+            <div style="color:var(--muted);font-size:13px">Or email: <a href="mailto:khubaib@example.com" style="color:var(--accent);text-decoration:none">khubaib@example.com</a></div>
+          </div>
+        </form>
+
+        <aside class="card reveal" style="padding:18px">
+          <h4 style="margin-top:0">Availability</h4>
+          <p style="color:var(--muted)">Currently taking freelance projects — typically 1–2 week turnaround for short edits. Rates depend on scope.</p>
+
+          <div style="margin-top:18px">
+            <h4 style="margin:0 0 6px">Quick links</h4>
+            <div style="display:flex;flex-direction:column;gap:8px;margin-top:8px">
+              <a href="#portfolio" style="color:var(--muted);text-decoration:none">View Portfolio</a>
+              <a href="#services" style="color:var(--muted);text-decoration:none">Service Packages</a>
+              <a href="#testimonials" style="color:var(--muted);text-decoration:none">Client Feedback</a>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap">
+      <div>
+        <strong>Khubaib Visuals</strong>
+        <div style="color:var(--muted);font-size:13px">© <span id="year"></span> Khubaib Visuals. All rights reserved.</div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:center">
+        <a href="#" style="color:var(--muted)"><i class="fa-brands fa-youtube"></i></a>
+        <a href="#" style="color:var(--muted)"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" style="color:var(--muted)"><i class="fa-brands fa-linkedin"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal for video playback -->
+  <div class="modal" id="modal" aria-hidden>
+    <div class="box">
+      <button id="closeModal" style="float:right;background:transparent;border:none;color:var(--muted);font-size:18px;margin-bottom:6px">Close ✕</button>
+      <video controls id="modalVideo" src="" playsinline></video>
+    </div>
+  </div>
+
+  <script>
+    // small helper: reveal elements on scroll
+    const observer = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting) e.target.classList.add('show');
+      })
+    },{threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+    // cursor
+    const cursor = document.getElementById('cursor');
+    document.addEventListener('mousemove', e=>{cursor.style.left = e.clientX + 'px'; cursor.style.top = e.clientY + 'px';});
+
+    // modal logic
+    const modal = document.getElementById('modal');
+    const modalVideo = document.getElementById('modalVideo');
+    document.querySelectorAll('.tile').forEach(tile=>{
+      tile.addEventListener('click', ()=>{
+        const src = tile.dataset.src || '';
+        if(!src) return;
+        modalVideo.src = src;
+        modal.classList.add('open');
+      })
+    });
+    document.getElementById('closeModal').addEventListener('click', ()=>{modal.classList.remove('open'); modalVideo.pause(); modalVideo.src='';});
+    modal.addEventListener('click', (e)=>{ if(e.target === modal) { modal.classList.remove('open'); modalVideo.pause(); modalVideo.src=''; } });
+
+    // hero thumb play (mock) — toggles small looping preview
+    const thumb = document.getElementById('thumb');
+    const thumbVideo = document.getElementById('thumbVideo');
+    let thumbPlaying = false;
+    thumb.addEventListener('click', ()=>{
+      // play a small built-in loop or open portfolio
+      if(!thumbPlaying){
+        thumbVideo.src = 'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4';
+        thumbVideo.play(); thumbPlaying = true;
+        thumb.querySelector('.play i').classList.remove('fa-play');
+        thumb.querySelector('.play i').classList.add('fa-pause');
+      } else {
+        thumbVideo.pause(); thumbPlaying = false;
+        thumbVideo.src = '';
+        thumb.querySelector('.play i').classList.remove('fa-pause');
+        thumb.querySelector('.play i').classList.add('fa-play');
+      }
+    });
+
+    // contact form: prevents default and opens mail client with content (for quick demo)
+    const form = document.getElementById('contactForm');
+    form.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const data = new FormData(form);
+      const name = encodeURIComponent(data.get('name') || '');
+      const email = encodeURIComponent(data.get('email') || '');
+      const project = encodeURIComponent(data.get('project') || 'Project');
+      const message = encodeURIComponent(data.get('message') || '');
+      const subject = encodeURIComponent('Work inquiry — ' + project + ' (' + name + ')');
+      const body = `Name: ${name}%0D%0AEmail: ${email}%0D%0A%0D%0A${message}`;
+      window.location.href = `mailto:kmd26225@gmail.com?subject=${subject}&body=${body}`;
+    });
+
+    // small UI hooks
+    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById('viewPortfolio').addEventListener('click', ()=>{document.getElementById('portfolio').scrollIntoView({behavior:'smooth'});});
+    document.getElementById('hireBtn').addEventListener('click', ()=>{document.getElementById('contact').scrollIntoView({behavior:'smooth'});});
+
+    // keyboard accessibility for modal: Escape closes
+    document.addEventListener('keydown',(e)=>{ if(e.key==='Escape'){ modal.classList.remove('open'); modalVideo.pause(); modalVideo.src=''; } });
+  </script>
+</body>
+</html>
